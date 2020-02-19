@@ -4,9 +4,8 @@ CWS.fileHandler = (function () {
   var $fileInput = $('.file-input'),
     $chooseFileButton = $('.choosefile-button'),
     $choosenFileText = $('.choosenfile-details-text'),
-    $addedFilesWrapper = $('.addedfiles-container'),
-    fileReaderObj = new FileReader();
-
+    $addedFilesWrapper = $('.addedfiles-container');
+  
   // Initializing fileHandler object
   function initialize () {
     $chooseFileButton.off('click').on('click', function () {
@@ -34,6 +33,8 @@ CWS.fileHandler = (function () {
 
   // This function will read the file Data and call the addFileDetails function with readed result data
   function readFileData (file) {
+    var fileReaderObj = new FileReader();
+
     fileReaderObj.onloadend = function (event) {
       addFileDetails(event.target.result, file);
     }
